@@ -6,6 +6,7 @@ AllCops:
     - 'db/**/*'
     - 'bin/**/*'
     - 'tmp/**/*'
+    - 'config/application.rb'
     - '**/Gemfile'
     - 'public/**/*'
   UseCache: false
