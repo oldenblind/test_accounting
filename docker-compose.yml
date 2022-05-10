@@ -1,0 +1,22 @@
+version: '3'
+services:
+  ta:
+    image: ta
+    command: rails s -b 0.0.0.0
+    build: .
+    environment:
+      DATABASE_URL: postgresql://test_accounting:test_accounting@db:5432/test_accounting
+    ports:
+    - 8080:3000
+    volumes:
+    - .:/usr/src/app
+
+  redis:
+    image: 'redis:latest'
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: test_accounting
+      POSTGRES_PASSWORD: test_accounting
+      POSTGRES_DB: test_accounting
