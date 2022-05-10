@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-
   describe '#index' do
-
     let(:user) { create(:user) }
     let(:headers) { { 'X-API-TOKEN' => user.api_token } }
 
@@ -28,9 +26,9 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     let(:user) { create(:user) }
     let(:password) { '123456789' }
 
-    let(:params) {{ user: { username: user.username, password: password } }}
+    let(:params) { { user: { username: user.username, password: } } }
 
-    subject { post :create, params: params }
+    subject { post :create, params: }
 
     before { user }
 
@@ -44,5 +42,4 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect { subject }.to change { User.count }.by(1)
     end
   end
-
 end

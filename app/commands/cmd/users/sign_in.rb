@@ -1,5 +1,4 @@
 class Cmd::Users::SignIn < Cmd::Base
-
   string :username
   password :password
 
@@ -10,7 +9,6 @@ class Cmd::Users::SignIn < Cmd::Base
   private
 
   def user
-    @user ||= User.find_by_username(username)
+    @user ||= User.find_by(username:)
   end
-
 end

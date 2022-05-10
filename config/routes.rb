@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
       namespace :users do
         resources :sessions, only: %i(create)
+        resources :balance_transactions, only: %i(index create)
       end
     end
   end
-
 end

@@ -1,5 +1,4 @@
 class Api::V1::Users::SessionController < Api::V1::BaseController
-
   def create
     outcome = Cmd::Users::SignIn.run!(user_params)
 
@@ -15,5 +14,4 @@ class Api::V1::Users::SessionController < Api::V1::BaseController
   def user_params
     params.require(:user).permit(:username, :password)
   end
-
 end

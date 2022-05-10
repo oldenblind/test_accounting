@@ -4,7 +4,7 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def current_user
-    User.find_by_api_token(api_token)
+    User.find_by(api_token:)
   end
 
   def render_model(model, status: 200)
@@ -30,6 +30,6 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def api_token
-    @api_token ||= request.headers["X-API-TOKEN"]
+    @api_token ||= request.headers['X-API-TOKEN']
   end
 end

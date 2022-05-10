@@ -11,9 +11,6 @@ services:
     volumes:
     - .:/usr/src/app
 
-  redis:
-    image: 'redis:latest'
-
   db:
     image: postgres
     environment:

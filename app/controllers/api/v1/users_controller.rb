@@ -1,5 +1,4 @@
 class Api::V1::UsersController < Api::V1::BaseController
-
   before_action :authenticate!, only: :index
 
   def index
@@ -21,5 +20,4 @@ class Api::V1::UsersController < Api::V1::BaseController
   def user_params
     params.require(:user).permit(:username, :password)
   end
-
 end
