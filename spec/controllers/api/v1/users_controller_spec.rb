@@ -23,7 +23,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   end
 
   describe '#create' do
-    let(:user) { create(:user) }
+    let(:user) { build(:user) }
     let(:password) { '123456789' }
 
     let(:params) { { user: { username: user.username, password: } } }
@@ -40,6 +40,22 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
     it 'should create new user' do
       expect { subject }.to change { User.count }.by(1)
+    end
+
+    context 'with non unique username' do
+      let(:o_user) { create(:user, username: user.username) }
+
+      before { o_user }
+
+      it 'should return unproccessable entity' do
+        subject
+
+        expect(response).to have_http_status(422)
+      end
+
+      it 'should not create user' do
+        expect { subject }.not_to change { User.count }
+      end
     end
   end
 end

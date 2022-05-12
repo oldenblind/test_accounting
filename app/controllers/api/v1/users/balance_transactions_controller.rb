@@ -7,7 +7,7 @@ class Api::V1::Users::BalanceTransactionsController < Api::V1::BaseController
     if outcome.valid?
       render_models outcome.result.to_a
     else
-      render_errors outcome.errors.to_h
+      render_errors outcome.errors.to_hash
     end
   end
 
@@ -18,7 +18,7 @@ class Api::V1::Users::BalanceTransactionsController < Api::V1::BaseController
     if outcome.valid?
       render_model outcome.result, status: 201
     else
-      render_errors outcome.errors.to_h
+      render_errors outcome.errors.to_hash
     end
   end
 

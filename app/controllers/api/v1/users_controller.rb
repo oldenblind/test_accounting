@@ -11,7 +11,7 @@ class Api::V1::UsersController < Api::V1::BaseController
     if outcome.valid?
       render_model outcome.result
     else
-      render_errors outcome.erorrs.to_h
+      render_errors outcome.errors.to_hash
     end
   end
 

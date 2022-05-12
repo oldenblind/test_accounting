@@ -3,8 +3,8 @@ class Cmd::Users::SignUp < Cmd::Base
   string :password
 
   def execute
-    user = User.new(username:, password:)
-
-    user.save ? user : errors.add(:sig, user.errors.messages)
+    User.create(username:, password:)
+  rescue => e
+    errors.add(:sign_up, e.message)
   end
 end
