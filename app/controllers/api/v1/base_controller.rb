@@ -12,7 +12,7 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def render_models(models, status: 200)
-    render json: serialize(models).serializable_hash, status:
+    render json: serialize(models.to_a).serializable_hash, status:
   end
 
   def render_errors(errors, status: 422)

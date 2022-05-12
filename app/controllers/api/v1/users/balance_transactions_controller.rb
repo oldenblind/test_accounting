@@ -5,7 +5,7 @@ class Api::V1::Users::BalanceTransactionsController < Api::V1::BaseController
     outcome = Cmd::Users::BalanceTransactions::List.run(period.merge(user: current_user))
 
     if outcome.valid?
-      render_models outcome.result.to_a
+      render_models outcome.result
     else
       render_errors outcome.errors.to_hash
     end
